@@ -7,3 +7,4 @@ pandas
 tldextract
 xgboost
 catboost
+fastapi-cors-middleware

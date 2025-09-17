@@ -4,6 +4,7 @@ import joblib
 import tldextract
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware # Import the CORS middleware
 
 # -----------------
 # Pydantic Model for API Input
@@ -195,6 +196,23 @@ def compute_heuristic_risk(url, known_tlds, base_prob):
 # FastAPI Application
 # -----------------
 app = FastAPI()
+
+# Add CORS middleware to allow requests from the browser extension
+origins = [
+    # Allow all origins for development
+    "*",
+    # You can specify your extension's ID here for better security in a real application
+    # "chrome-extension://your-extension-id" 
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Load the model on startup
 model = joblib.load("stacking_url_model.pkl")

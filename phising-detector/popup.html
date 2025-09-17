@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Phishing Detector</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="header">
-    <img src="icon.png" alt="PhishGuard Icon" class="header-icon">
+    <img src="icon16.png" alt="PhishGuard Icon" class="header-icon">
     <span class="header-title">PhishGuard</span>
     <span class="status active-status">Active</span>
   </div>
@@ -30,15 +32,47 @@
 
     <div class="section-title">Current Site Analysis</div>
     <div class="current-site-analysis">
-      <input type="text" id="current-url-display" readonly value="Loading URL...">
-      <div class="risk-info">
-        <span class="risk-label">Risk Score:</span>
-        <span class="risk-score-display" id="risk-score-ui">0%</span>
-      </div>
-      <div class="reasons" id="reasons-display">
+      <input type="text" id="current-url-display" readonly value="Loading URL..." aria-label="Current URL">
+
+      <!-- URL Prediction Card -->
+      <div class="prediction-card" id="url-prediction-card" role="region" aria-labelledby="url-prediction-title">
+        <div class="prediction-title" id="url-prediction-title">URL Phishing Prediction</div>
+        <div class="prediction-row">
+          <div class="prediction-left">
+            <div class="label">Score</div>
+            <div id="url-score" class="score-pill neutral">--%</div>
+          </div>
+          <div class="prediction-right">
+            <div class="label">Risk?</div>
+            <div id="url-risk" class="risk-pill unknown">Unknown</div>
+          </div>
         </div>
+        <div id="url-extra" class="muted small">No additional details.</div>
+      </div>
+
+      <!-- Webpage Prediction Card -->
+      <div class="prediction-card" id="webpage-prediction-card" role="region" aria-labelledby="webpage-prediction-title">
+        <div class="prediction-title" id="webpage-prediction-title">Webpage Phishing Prediction</div>
+        <div class="prediction-row">
+          <div class="prediction-left">
+            <div class="label">Score</div>
+            <div id="webpage-score" class="score-pill neutral">--%</div>
+          </div>
+          <div class="prediction-right">
+            <div class="label">Risk?</div>
+            <div id="webpage-risk" class="risk-pill unknown">Unknown</div>
+          </div>
+        </div>
+
+        <div class="label" style="margin-top:10px;">Red Flags</div>
+        <ul id="red-flags-list" class="red-flags">
+          <li class="muted">No flags yet.</li>
+        </ul>
+      </div>
     </div>
     
+    <div id="reasons-display" class="reasons" aria-live="polite"></div>
+
     <div class="section-title">Quick Actions</div>
     <div class="quick-actions">
         <button class="action-button primary" id="scan-current-page-button">Scan Current Page</button>

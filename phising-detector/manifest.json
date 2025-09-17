@@ -8,10 +8,16 @@
     "scripting"
   ],
   "host_permissions": [
-    "http://127.0.0.1:8000/"
+  "http://172.16.45.127/*",
+  "http://172.16.45.121/*",
+  "http://127.0.0.1/*"
   ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
+  },
+  "icons": {
+  "16": "icon16.png",
+  "32": "icon.png"
   }
 }
