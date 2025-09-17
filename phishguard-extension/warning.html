@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard Warning</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .warning-container {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .warning-header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .warning-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .warning-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .warning-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .warning-body {
+            padding: 40px;
+        }
+        
+        .url-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .url-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #495057;
+            word-break: break-all;
+            background: white;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .risk-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 16px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+        }
+        
+        .risk-label {
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .risk-score {
+            font-size: 24px;
+            font-weight: 700;
+            color: #dc3545;
+        }
+        
+        .reasons-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .reasons-list h4 {
+            color: #495057;
+            margin-bottom: 12px;
+        }
+        
+        .reasons-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .reasons-list li {
+            margin-bottom: 8px;
+            color: #6c757d;
+        }
+        
+        .warning-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .warning-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .warning-btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .warning-btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        
+        .warning-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .warning-btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .warning-btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .warning-btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+        
+        .safety-tips {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .safety-tips h4 {
+            color: #0c5460;
+            margin-bottom: 12px;
+        }
+        
+        .safety-tips ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .safety-tips li {
+            margin-bottom: 6px;
+            color: #0c5460;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 600px) {
+            .warning-container {
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+            
+            .warning-header {
+                padding: 30px 20px;
+            }
+            
+            .warning-body {
+                padding: 30px 20px;
+            }
+            
+            .warning-title {
+                font-size: 24px;
+            }
+            
+            .warning-subtitle {
+                font-size: 16px;
+            }
+            
+            .warning-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="warning-container">
+        <div class="warning-header">
+            <div class="warning-icon">⚠️</div>
+            <h1 class="warning-title">Phishing Warning</h1>
+            <p class="warning-subtitle">This website has been flagged as potentially dangerous</p>
+        </div>
+        
+        <div class="warning-body">
+            <div class="url-info">
+                <h3>Suspicious URL Detected:</h3>
+                <div class="url-text" id="suspiciousUrl">Loading...</div>
+            </div>
+            
+            <div class="risk-info">
+                <span class="risk-label">Risk Level:</span>
+                <span class="risk-score" id="riskScore">HIGH</span>
+            </div>
+            
+            <div class="reasons-list">
+                <h4>Why this site is flagged:</h4>
+                <ul id="reasonsList">
+                    <li>Loading reasons...</li>
+                </ul>
+            </div>
+            
+            <div class="safety-tips">
+                <h4>🛡️ Safety Tips:</h4>
+                <ul>
+                    <li>Never enter personal information on suspicious websites</li>
+                    <li>Check the URL carefully for typos or unusual domains</li>
+                    <li>Look for HTTPS and a valid security certificate</li>
+                    <li>When in doubt, navigate directly to the official website</li>
+                    <li>Report suspicious websites to help protect others</li>
+                </ul>
+            </div>
+            
+            <div class="warning-actions">
+                <button class="warning-btn warning-btn-danger" id="goBackBtn">
+                    🚫 Go Back to Safety
+                </button>
+                <button class="warning-btn warning-btn-secondary" id="reportBtn">
+                    📢 Report This Site
+                </button>
+                <button class="warning-btn warning-btn-primary" id="proceedBtn">
+                    ⚠️ Proceed at Your Own Risk
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const suspiciousUrl = urlParams.get('url') || 'Unknown URL';
+        const reason = urlParams.get('reason') || 'Suspicious activity detected';
+
+        // Update the page content
+        document.getElementById('suspiciousUrl').textContent = suspiciousUrl;
+        document.getElementById('reasonsList').innerHTML = `<li>${reason}</li>`;
+
+        // Event listeners
+        document.getElementById('goBackBtn').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        document.getElementById('reportBtn').addEventListener('click', () => {
+            // Report the phishing URL
+            chrome.runtime.sendMessage({
+                action: 'reportPhishing',
+                url: suspiciousUrl
+            });
+            
+            alert('Thank you for reporting this suspicious website. It has been added to our database.');
+            window.history.back();
+        });
+
+        document.getElementById('proceedBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to proceed? This website may be dangerous and could steal your personal information.')) {
+                window.location.href = suspiciousUrl;
+            }
+        });
+
+        // Auto-focus on the go back button for accessibility
+        document.getElementById('goBackBtn').focus();
+    </script>
+</body>
+</html>
