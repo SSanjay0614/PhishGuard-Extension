@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+}
+h1 {
+  color: #333;
+}
+#result-text {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#risk-score {
+  color: #666;
+  font-size: 0.9em;
+}
+.safe {
+  color: green;
+}
+.phishing {
+  color: red;
+}
