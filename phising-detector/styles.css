@@ -1,23 +1,241 @@
 body {
-  font-family: sans-serif;
-  width: 300px;
-  padding: 10px;
-  text-align: center;
-}
-h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 350px; /* Slightly wider to accommodate content */
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
   color: #333;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
-#result-text {
-  font-size: 1.5em;
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #6a1b9a; /* Deep purple */
+  color: white;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+.header-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.status {
+  font-size: 0.8em;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.active-status {
+  background-color: #4CAF50; /* Green dot for active */
+  color: white;
+  margin-left: auto; /* Push to the right */
+}
+.active-status::before {
+    content: '• ';
+}
+
+/* Container for main content */
+.container {
+  padding: 15px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1em;
+  font-weight: bold;
+  color: #6a1b9a; /* Deep purple */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for better vertical flow in popup */
+  gap: 10px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #6a1b9a; /* Deep purple */
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.75em;
+  color: #777;
+  text-transform: uppercase;
+}
+
+/* Current Site Analysis */
+.current-site-analysis {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#current-url-display {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  box-sizing: border-box; /* Include padding in width */
+  background-color: #eee; /* Light gray background */
+  color: #555;
+}
+
+.risk-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.risk-label {
   font-weight: bold;
 }
-#risk-score {
+
+.risk-score-display {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #4CAF50; /* Green for safe */
+  color: white;
+}
+
+.risk-score-display.phishing {
+  background-color: #F44336; /* Red for phishing */
+}
+
+.risk-score-display.unknown {
+  background-color: #FFC107; /* Orange for unknown/error */
+}
+
+.reasons {
+  font-size: 0.85em;
   color: #666;
-  font-size: 0.9em;
+  margin-top: 5px;
 }
-.safe {
-  color: green;
+
+.reasons ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
 }
-.phishing {
-  color: red;
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+}
+
+.action-button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    width: 100%; /* Make buttons full width */
+}
+
+.action-button.primary {
+    background-color: #6a1b9a; /* Deep purple */
+    color: white;
+}
+.action-button.primary:hover {
+    background-color: #7b2ecb;
+}
+
+.action-button.danger {
+    background-color: #F44336; /* Red */
+    color: white;
+}
+.action-button.danger:hover {
+    background-color: #e53935;
+}
+
+.action-button.secondary {
+    background-color: #9E9E9E; /* Gray */
+    color: white;
+}
+.action-button.secondary:hover {
+    background-color: #888888;
+}
+
+/* Settings List */
+.settings-list {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.1); /* Slightly larger checkbox */
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #eeeeee;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.8em;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+.footer a {
+  color: #6a1b9a; /* Deep purple */
+  text-decoration: none;
+  padding: 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
