@@ -68,18 +68,22 @@ The extension calculates a risk score from 0-100% based on:
 
 ```
 PhishGuard/
-├── manifest.json          # Extension manifest
-├── background.js          # Service worker for background tasks
-├── content.js            # Content script for page analysis
-├── popup.html            # Extension popup interface
-├── popup.js              # Popup functionality
-├── warning.html          # Warning page for blocked sites
-├── styles.css            # Styling for all components
-├── icons/                # Extension icons
-│   ├── icon16.png
-│   ├── icon32.png
-│   ├── icon48.png
-│   └── icon128.png
+├── Document
+    ├──PHISHGUARD.pdf
+├── Video
+   ├── Phishing Attack_Warning_Video.mp4
+├── phishing-detector
+   ├── icon.png
+   ├── icon16.png
+   ├── manifest.json   # Extension manifest
+   ├── popup.html      # Extension popup interface
+   ├── popup.js        # Popup functionality
+   ├── styles.css      # Styling for all components
+├── .gitattributes     # For uploading pdf and mp4 files
+├── .gitignore         # For ignore python virtual environment files
+├── main.py            # Main python file
+├── requirements.txt   # Python Libraries to be installed in virtual environment
+├── stacking_url_model.pkl   # ML Model saved as pickle file
 └── README.md             # This file
 ```
 
