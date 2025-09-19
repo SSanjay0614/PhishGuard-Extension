@@ -62,27 +62,6 @@ Select the phishing-detector/ folder inside this repository
 
 You should now see the PhishGuard icon in the toolbar. Click it to open the popup UI and test URLs/pages.
 
-### 📂 Project Structure
-PhishGuard/
-├── Document/
-│   ├── PHISHGUARD.pdf                  # Documentation
-├── Video/
-│   ├── Phishing Attack_Warning_Video.mp4 # Demo video
-├── phishing-detector/
-│   ├── icon.png
-│   ├── icon16.png
-│   ├── manifest.json      # Extension manifest
-│   ├── popup.html         # Extension popup UI
-│   ├── popup.js           # Popup functionality
-│   ├── styles.css         # Styling for the popup
-├── .gitattributes         # For uploading pdf and mp4 files
-├── .gitignore             # Ignore venv and other files
-├── page_api.py            # Backend API for webpage phishing detection
-├── url_api.py             # Backend API for URL phishing detection
-├── requirements.txt       # Python dependencies
-├── stacking_url_model.pkl # Pre-trained ML model (pickle)
-└── README.md              # This file
-
 
 ### ⚙️ Tech Stack
 
