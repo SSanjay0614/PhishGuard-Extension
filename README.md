@@ -1,7 +1,7 @@
 # 🛡️ PhishGuard – Browser Extension for Phishing Detection
 
 <p align="center">
-  <video src="Video/Phishing%20Attack_Warning_Video.mp4" controls width="720" />
+  <video src="Video/Phishing_Attack_Warning_Video.mp4" controls width="720" />
 </p>
 
 > If the embedded video doesn't render on GitHub, click here to watch:  
@@ -35,9 +35,67 @@ This two-tier approach verifies both the link and the actual page before flaggin
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/SSanjay0614/PhishGuard.git
+git clone https://github.com/yourusername/PhishGuard.git
 cd PhishGuard
 ```
-## 2. Set up Python backend for URL/page APIs
+### 2. Set up Python backend for URL/page APIs
+PhishGuard uses local backend APIs (url_api.py, page_api.py) to serve ML inferences.
+python -m venv venv
+# Linux / Mac
+source venv/bin/activate
+# Windows
+# venv\Scripts\activate
 
-PhishGuard uses local backend APIs (`url_api.py`, `page_api.py`) to serve ML inferences.
+pip install -r requirements.txt
+
+Start the backend APIs (in separate terminals if needed):
+python url_api.py
+python page_api.py
+
+Make sure the APIs are accessible to the extension (e.g., default localhost ports). Update popup.js endpoints if you use non-default ports.
+### 3. Load the extension in your browser
+
+Open Chrome (or Edge/Brave) → chrome://extensions/
+Toggle Developer mode (top-right)
+Click Load unpacked
+Select the phishing-detector/ folder inside this repository
+
+You should now see the PhishGuard icon in the toolbar. Click it to open the popup UI and test URLs/pages.
+
+### 📂 Project Structure
+PhishGuard/
+├── Document/
+│   ├── PHISHGUARD.pdf                  # Documentation
+├── Video/
+│   ├── Phishing Attack_Warning_Video.mp4 # Demo video
+├── phishing-detector/
+│   ├── icon.png
+│   ├── icon16.png
+│   ├── manifest.json      # Extension manifest
+│   ├── popup.html         # Extension popup UI
+│   ├── popup.js           # Popup functionality
+│   ├── styles.css         # Styling for the popup
+├── .gitattributes         # For uploading pdf and mp4 files
+├── .gitignore             # Ignore venv and other files
+├── page_api.py            # Backend API for webpage phishing detection
+├── url_api.py             # Backend API for URL phishing detection
+├── requirements.txt       # Python dependencies
+├── stacking_url_model.pkl # Pre-trained ML model (pickle)
+└── README.md              # This file
+
+
+### ⚙️ Tech Stack
+
+Extension Frontend: HTML, CSS, JavaScript
+Backend: Python (Flask/FastAPI recommended)
+ML: scikit-learn, LightGBM, XGBoost, CatBoost
+LLM Integration: Mistral via Ollama (for webpage analysis)
+Scraping: BeautifulSoup, Requests
+
+
+### 📊 Results (URL Detection)
+
+Accuracy: 99.77%
+F1-Score: 99.80%
+
+These metrics are from the stacking ensemble trained on the PhiUSIIL phishing URL dataset. Webpage detection uses LLM probabilities combined with heuristic scoring (final = 0.5 * LLM + 0.5 * Heuristic by default).
