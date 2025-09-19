@@ -5,7 +5,7 @@
 </p>
 
 > If the embedded video doesn't render on GitHub, click here to watch:  
-> [🎥 Demo: Phishing Attack Warning Video](Video/Phishing%20Attack_Warning_Video.mp4)
+> [🎥 Demo: Phishing Attack Warning Video](Video/Phishing_Attack_Warning_Video.mp4)
 
 ---
 
