@@ -41,10 +41,10 @@ cd PhishGuard
 ### 2. Set up Python backend for URL/page APIs
 PhishGuard uses local backend APIs (url_api.py, page_api.py) to serve ML inferences.
 python -m venv venv
-# Linux / Mac
+#### Linux / Mac
 source venv/bin/activate
-# Windows
-# venv\Scripts\activate
+#### Windows
+venv\Scripts\activate
 
 pip install -r requirements.txt
 
